@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.no-scrollbar {
+		-ms-overflow-style: none;
+		scrollbar-width: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		width: 0;
+		height: 0;
+	}
+}
+
+/* Professional Print Styles */
+@media print {
+	/* Hide UI elements */
+	.no-print, 
+	nav, 
+	aside, 
+	header button,
+	.fixed,
+	[role="navigation"] {
+		display: none !important;
+	}
+	
+	/* Reset layout for print */
+	body {
+		background: white !important;
+		font-size: 12pt;
+	}
+	
+	main {
+		margin: 0 !important;
+		padding: 0 !important;
+		width: 100% !important;
+		max-width: 100% !important;
+	}
+	
+	/* Invoice/Order styling */
+	.print-container {
+		page-break-inside: avoid;
+		margin: 0;
+		padding: 20px;
+	}
+	
+	/* Optimize colors for print */
+	* {
+		color: #000 !important;
+		background: white !important;
+		box-shadow: none !important;
+	}
+	
+	/* Keep borders */
+	*[class*="border"] {
+		border-color: #ccc !important;
+	}
+	
+	/* Ensure tables print properly */
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	
+	table td, table th {
+		padding: 8px;
+		border: 1px solid #ccc !important;
+	}
+	
+	/* Page breaks */
+	.page-break {
+		page-break-after: always;
+	}
+	
+	/* Headers */
+	h1, h2, h3 {
+		page-break-after: avoid;
+		color: #000 !important;
+		font-weight: bold;
+	}
+	
+	/* Links */
+	a {
+		text-decoration: none;
+		color: #000 !important;
+	}
+	
+	/* Make sure critical info is visible */
+	.print-show {
+		display: block !important;
+	}
+}
